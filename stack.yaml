@@ -4,7 +4,7 @@ services:
     image: mysql:5.7.31
     command: --default-authentication-plugin=mysql_native_password
     ports:
-      - 3300:33060
+      - 33060:3306
     volumes:
       - type: volume
         source: mysql_5_7_31
