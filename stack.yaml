@@ -1,6 +1,6 @@
 version: '3.8'
 services:
-  db:
+  postgres_12_4:
     image: postgres:12.4-alpine
     restart: always
     volumes:
@@ -9,5 +9,13 @@ services:
       - 5432:5432
     environment:
       POSTGRES_PASSWORD: 'root0000'
+  redis:
+    image: redis:6-alpine
+    restart: always
+    volumes:
+      - redis_6:/data
+    ports:
+      - 6379:6379
 volumes:
   postgres_12_4:
+  redis_6:
