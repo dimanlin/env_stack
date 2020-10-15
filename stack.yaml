@@ -2,20 +2,28 @@ version: '3.8'
 services:
   postgres_12_4:
     image: postgres:12.4-alpine
-    restart: always
     volumes:
       - postgres_12_4:/var/lib/postgresql/data
     ports:
       - 5432:5432
     environment:
-      POSTGRES_PASSWORD: 'root0000'
+      POSTGRES_PASSWORD: root0000
+  mysql_8_0_21:
+    image: mysql:8.0.21
+    command: --default-authentication-plugin=mysql_native_password
+    volumes:
+      - mysql_8_0_21:/var/lib/mysql
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: root0000
   redis:
     image: redis:6-alpine
-    restart: always
     volumes:
       - redis_6:/data
     ports:
       - 6379:6379
 volumes:
+  mysql_8_0_21:
   postgres_12_4:
   redis_6:
